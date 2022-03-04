@@ -1,0 +1,15 @@
+version: "3"
+
+networks:
+  backend:
+
+services:
+  todo-node:
+    build: .
+    command: yarn run start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    networks:
+      - backend
