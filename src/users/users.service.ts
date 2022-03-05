@@ -1,24 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
+import { CreateUserDto } from 'src/auth/dtos/create-user.dto';
+import { User } from './entities/user.entity';
 
-// This should be a real class/interface representing a user entity
-export type User = any;
 
 @Injectable()
-export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+export class UsersService extends TypeOrmCrudService<User>{
+  constructor(@InjectRepository(User) repo) { super(repo) }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find(user => user.username === username);
+  async createUser(user: CreateUserDto): Promise<User> {
+    return await this.repo.save(user);
   }
 }

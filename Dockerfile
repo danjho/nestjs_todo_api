@@ -4,7 +4,12 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn
+RUN apk add --no-cache --virtual .gyp \
+        python3 \
+        make \
+        g++ \
+    && yarn \
+    && apk del .gyp
 
 EXPOSE 3000
 
