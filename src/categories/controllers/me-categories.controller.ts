@@ -6,7 +6,7 @@ import { Auth } from '../decorators/auth.decorator';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import { Category } from '../entities/category.entity';
 
-@Controller('categories')
+@Controller('me/categories')
 @Auth()
 @Crud({
     model: { type: Category },

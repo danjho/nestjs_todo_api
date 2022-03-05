@@ -4,7 +4,7 @@ import { Auth } from 'src/categories/decorators/auth.decorator';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users.service';
 
-@Controller('users')
+@Controller('me')
 @Auth()
 @Crud({
     model: { type: User },
