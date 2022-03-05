@@ -2,10 +2,12 @@ import { Controller } from '@nestjs/common';
 import { Crud, CrudAuth, CrudController } from '@nestjsx/crud';
 import { User } from 'src/users/entities/user.entity';
 import { CategoriesService } from '../categories.service';
+import { Auth } from '../decorators/auth.decorator';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import { Category } from '../entities/category.entity';
 
 @Controller('categories')
+@Auth()
 @Crud({
     model: { type: Category },
     dto: {
