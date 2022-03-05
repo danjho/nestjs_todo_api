@@ -7,11 +7,12 @@ services:
   api:
     container_name: node
     build: .
-    command: yarn run start
+    command: yarn run start:dev
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/app
+      - .:/home/node/app
+      - /home/node/app/node_modules
     networks:
       - backend
     depends_on:
@@ -28,6 +29,3 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     networks:
       - backend
-    
-volumes:
-  db:
