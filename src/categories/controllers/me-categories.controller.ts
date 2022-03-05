@@ -5,8 +5,11 @@ import { CategoriesService } from '../categories.service';
 import { Auth } from '../../auth/decorators/auth.decorator';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import { Category } from '../entities/category.entity';
+import { ApiTags } from '@nestjs/swagger';
+import { ApiTag } from 'src/api-tags.constants';
 
 @Controller('me/categories')
+@ApiTags(ApiTag.Category)
 @Auth()
 @Crud({
     model: { type: Category },
