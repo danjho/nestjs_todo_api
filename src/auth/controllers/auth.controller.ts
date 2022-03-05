@@ -1,9 +1,9 @@
 import { Controller, Post, UseGuards, Request, Body, NotFoundException } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { AuthService } from './auth.service';
-import { CreateUserDto } from './dtos/create-user.dto';
-import { LoginDto } from './dtos/login.dto';
-import { LocalAuthGuard } from './guards/local-auth.guard';
+import { AuthService } from '../auth.service';
+import { CreateUserDto } from '../dtos/create-user.dto';
+import { LoginDto } from '../dtos/login.dto';
+import { LocalAuthGuard } from '../guards/local-auth.guard';
 
 @Controller('auth')
 @ApiTags(`Auth`)
