@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { Crud, CrudAuth, CrudController } from '@nestjsx/crud';
-import { Auth } from 'src/categories/decorators/auth.decorator';
+import { Auth } from 'src/auth/decorators/auth.decorator';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users.service';
 
