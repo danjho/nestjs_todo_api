@@ -4,7 +4,8 @@ networks:
   backend:
 
 services:
-  todo-node:
+  api:
+    container_name: node
     build: .
     command: yarn run start
     ports:
@@ -13,3 +14,20 @@ services:
       - .:/usr/app
     networks:
       - backend
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres
+    image: postgres:alpine
+    restart: always
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - backend
+    
+volumes:
+  db:
