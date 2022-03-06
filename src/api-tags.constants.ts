@@ -4,6 +4,7 @@ export enum ApiTag {
     Auth = 'Auth',
     User = 'User',
     Category = 'Category',
+    Tasks = 'Tasks'
 }
 
 export const API_TAGS = Object.values(ApiTag).map((value) => {

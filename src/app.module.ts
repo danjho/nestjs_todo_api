@@ -6,6 +6,8 @@ import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/entities/category.entity';
+import { TasksModule } from './tasks/tasks.module';
+import { Task } from './tasks/entities/task.entity';
 
 @Module({
   imports: [
@@ -17,10 +19,10 @@ import { Category } from './categories/entities/category.entity';
         username: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
-        entities: [User, Category],
+        entities: [User, Category, Task],
         synchronize: true,
       }),
     }),
-    AuthModule, UsersModule, ConfigModule.forRoot(), CategoriesModule],
+    AuthModule, UsersModule, ConfigModule.forRoot(), CategoriesModule, TasksModule],
 })
 export class AppModule { }
