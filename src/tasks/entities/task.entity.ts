@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Category } from 'src/categories/entities/category.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -8,18 +9,22 @@ export class Task {
     id: string;
 
     @ApiProperty()
-    @Column()
+    @Column({ nullable: false })
     title: string;
 
     @ApiProperty()
-    @Column()
-    description: string;
+    @Column({ default: false })
+    done: boolean;
 
     @ApiProperty()
     @Column()
-    done: boolean;
+    date: Date;
 
-    @ManyToOne(type => User, user => user.tasks, { nullable: false })
+    @ManyToOne(() => User, user => user.tasks, { nullable: false })
     @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
     user: User;
+
+    @ManyToOne(() => Category, category => category.tasks, { nullable: false })
+    @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
+    category: Category
 }

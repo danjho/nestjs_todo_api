@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Exclude } from 'class-transformer';
+import { IsHexColor } from 'class-validator';
+import { Task } from 'src/tasks/entities/task.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, ManyToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Category {
@@ -9,10 +10,18 @@ export class Category {
     id: string;
 
     @ApiProperty()
-    @Column()
+    @Column({ nullable: false })
     name: string;
+
+    @ApiProperty()
+    @Column({ nullable: false })
+    @IsHexColor()
+    color: string;
 
     @ManyToOne(type => User, user => user.categories, { nullable: false })
     @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
     user: User;
+
+    @OneToMany(() => Task, task => task.category)
+    tasks: Task[];
 }

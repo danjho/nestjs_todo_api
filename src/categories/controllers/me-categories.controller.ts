@@ -13,9 +13,7 @@ import { ApiTag } from 'src/api-tags.constants';
 @Auth()
 @Crud({
     model: { type: Category },
-    dto: {
-        create: CreateCategoryDto,
-    },
+    dto: { create: CreateCategoryDto },
     routes: {
         only: ['createOneBase', 'getOneBase', 'updateOneBase', 'getManyBase'],
     },

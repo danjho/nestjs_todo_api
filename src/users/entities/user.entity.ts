@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { Category } from 'src/categories/entities/category.entity';
 import { Task } from 'src/tasks/entities/task.entity';
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -10,11 +10,11 @@ export class User {
   id: string;
 
   @ApiProperty()
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
   @ApiProperty()
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false })
   email: string;
 
   @ApiProperty()
@@ -22,17 +22,13 @@ export class User {
   imageUrl: string;
 
   @ApiProperty()
-  @Column()
+  @Column({ nullable: false })
   @Exclude({ toPlainOnly: true })
   password: string;
 
-  @ApiProperty()
-  @Column({ default: true })
-  isActive: boolean;
-  
-  @OneToMany(type => Category, category => category.user)
+  @OneToMany(() => Category, category => category.user)
   categories: Category[];
 
-  @OneToMany(type => Task, task => task.user)
+  @OneToMany(() => Task, task => task.user)
   tasks: Task[];
 }
