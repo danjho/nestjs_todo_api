@@ -24,6 +24,7 @@ import { ApiTag } from 'src/api-tags.constants';
                 eager: true,
                 select: false,
             },
+            tasks: {}
         },
     },
 })
