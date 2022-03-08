@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Category } from 'src/categories/entities/category.entity';
+import { BaseTimeStampEntity } from 'src/common/entities/base-timestamp.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Task {
+export class Task extends BaseTimeStampEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 

@@ -1,11 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsHexColor } from 'class-validator';
+import { BaseTimeStampEntity } from 'src/common/entities/base-timestamp.entity';
 import { Task } from 'src/tasks/entities/task.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Category {
+export class Category extends BaseTimeStampEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
