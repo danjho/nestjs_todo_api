@@ -3,6 +3,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { Crud, CrudAuth, CrudController } from '@nestjsx/crud';
 import { ApiTag } from 'src/api-tags.constants';
 import { Auth } from 'src/common/decorators/auth.decorator';
+import { UpdateUserDto } from '../dtos/update-user.dto';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users.service';
 
@@ -11,6 +12,7 @@ import { UsersService } from '../users.service';
 @Auth()
 @Crud({
     model: { type: User },
+    dto: { update: UpdateUserDto },
     routes: { only: ['getOneBase', 'updateOneBase'] },
     params: {
         id: {

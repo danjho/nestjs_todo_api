@@ -7,13 +7,14 @@ import { CreateCategoryDto } from '../dtos/create-category.dto';
 import { Category } from '../entities/category.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiTag } from 'src/api-tags.constants';
+import { UpdateCategoryDto } from '../dtos/update-category.dto';
 
 @Controller('me/categories')
 @ApiTags(ApiTag.Category)
 @Auth()
 @Crud({
     model: { type: Category },
-    dto: { create: CreateCategoryDto },
+    dto: { create: CreateCategoryDto, update: UpdateCategoryDto },
     routes: {
         only: ['createOneBase', 'getOneBase', 'updateOneBase', 'getManyBase'],
     },

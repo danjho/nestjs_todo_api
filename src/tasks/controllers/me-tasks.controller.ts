@@ -5,6 +5,7 @@ import { ApiTag } from 'src/api-tags.constants';
 import { Auth } from 'src/common/decorators/auth.decorator';
 import { User } from 'src/users/entities/user.entity';
 import { CreateTaskDto } from '../dtos/create-task.dto';
+import { UpdateTaskDto } from '../dtos/update-task.dto';
 import { Task } from '../entities/task.entity';
 import { TasksService } from '../tasks.service';
 
@@ -13,7 +14,7 @@ import { TasksService } from '../tasks.service';
 @Auth()
 @Crud({
     model: { type: Task },
-    dto: { create: CreateTaskDto },
+    dto: { create: CreateTaskDto, update: UpdateTaskDto },
     routes: {
         only: ['createOneBase', 'getOneBase', 'updateOneBase', 'getManyBase'],
     },
