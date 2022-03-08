@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsHexColor } from 'class-validator';
+import { IsHexColor, IsNotEmpty } from 'class-validator';
 import { BaseTimeStampEntity } from 'src/common/entities/base-timestamp.entity';
 import { Task } from 'src/tasks/entities/task.entity';
 import { User } from 'src/users/entities/user.entity';
@@ -12,6 +12,7 @@ export class Category extends BaseTimeStampEntity {
 
     @ApiProperty()
     @Column({ nullable: false })
+    @IsNotEmpty()
     name: string;
 
     @ApiProperty()

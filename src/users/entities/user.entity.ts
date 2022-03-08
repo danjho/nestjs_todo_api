@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
+import { IsEmail, IsNotEmpty, Min } from 'class-validator';
 import { Category } from 'src/categories/entities/category.entity';
 import { BaseTimeStampEntity } from 'src/common/entities/base-timestamp.entity';
 import { Task } from 'src/tasks/entities/task.entity';
@@ -12,18 +13,21 @@ export class User extends BaseTimeStampEntity {
 
   @ApiProperty()
   @Column({ nullable: false })
+  @IsNotEmpty()
   name: string;
-
+  
   @ApiProperty()
   @Column({ unique: true, nullable: false })
+  @IsNotEmpty()
+  @IsEmail()
   email: string;
-
+  
   @ApiProperty()
   @Column({ name: 'image_url', nullable: true })
   imageUrl: string;
-
+  
   @ApiProperty()
-  @Column({ nullable: false })
+  @Column({ nullable: false,  })
   @Exclude({ toPlainOnly: true })
   password: string;
 
