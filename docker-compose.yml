@@ -29,3 +29,6 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     networks:
       - backend
+
+volumes:
+  db:
