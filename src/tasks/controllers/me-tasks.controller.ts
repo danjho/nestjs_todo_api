@@ -8,7 +8,7 @@ import { CreateTaskDto } from '../dtos/create-task.dto';
 import { Task } from '../entities/task.entity';
 import { TasksService } from '../tasks.service';
 
-@Controller('tasks')
+@Controller('me/tasks')
 @ApiTags(ApiTag.Tasks)
 @Auth()
 @Crud({
