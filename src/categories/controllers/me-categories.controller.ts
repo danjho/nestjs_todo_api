@@ -2,7 +2,7 @@ import { Controller } from '@nestjs/common';
 import { Crud, CrudAuth, CrudController } from '@nestjsx/crud';
 import { User } from 'src/users/entities/user.entity';
 import { CategoriesService } from '../categories.service';
-import { Auth } from '../../auth/decorators/auth.decorator';
+import { Auth } from '../../common/decorators/auth.decorator';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import { Category } from '../entities/category.entity';
 import { ApiTags } from '@nestjs/swagger';
