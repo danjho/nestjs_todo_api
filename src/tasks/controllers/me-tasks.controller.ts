@@ -25,6 +25,10 @@ import { TasksService } from '../tasks.service';
                 eager: true,
                 select: false,
             },
+            category: {
+              alias: 'category',
+              eager: false,
+            }
         },
     },
 })
