@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "timeout": 30000,
+      "address": "localhost",
+      "protocol": "inspector",
+      "restart": true,
+      "remoteRoot": "/home/node/app",
+      "localRoot": "${workspaceFolder}",
+    }
+  ]
+}

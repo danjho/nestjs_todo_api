@@ -7,9 +7,10 @@ services:
   api:
     container_name: node
     build: .
-    command: yarn run start:dev
+    command: yarn run start:debug
     ports:
-      - "3000:3000"
+      - 3000:3000
+      - 9229:9229
     volumes:
       - .:/home/node/app
       - /home/node/app/node_modules
