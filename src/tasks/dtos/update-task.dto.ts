@@ -1,4 +1,9 @@
-import { OmitType } from "@nestjs/swagger";
-import { CreateTaskDto } from "./create-task.dto";
+import { ApiProperty, OmitType, PartialType } from "@nestjs/swagger";
+import { IsInt } from "class-validator";
+import { Task } from "../entities/task.entity";
 
-export class UpdateTaskDto extends OmitType(CreateTaskDto, []) { }
+export class UpdateTaskDto extends PartialType(OmitType(Task, [])) {
+  @ApiProperty()
+  @IsInt()
+  category: number;
+}

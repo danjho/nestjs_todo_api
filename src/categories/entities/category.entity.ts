@@ -10,14 +10,14 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity()
 export class Category extends BaseTimeStampEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   @ApiProperty()
-  id: string;
+  id: number;
 
   @ApiProperty()
   @Column({ nullable: false })
@@ -31,7 +31,7 @@ export class Category extends BaseTimeStampEntity {
 
   @ManyToOne((type) => User, (user) => user.categories, { nullable: false })
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-  @Exclude({ toPlainOnly: true})
+  @Exclude({ toPlainOnly: true })
   user: User;
 
   @OneToMany(() => Task, (task) => task.category)
